@@ -2,6 +2,11 @@ import React from "react";
 import { deleteIcon, headTitle } from "../constants/constant";
 
 const Form = ({ togglePopUp }) => {
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+  }
+
   return (
     <div className="w-full md:w-1/2 bg-white h-[200px] p-5 shadow-2xl absolute z-30 top-32 md:left-[25%] ">
       <div className="flex justify-between items-center mb-2">
@@ -10,7 +15,7 @@ const Form = ({ togglePopUp }) => {
         </h3>
         <button onClick={togglePopUp}>{deleteIcon}</button>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           className="bg-gray-100 w-full p-2 shadow-md rounded"
           type="text"
