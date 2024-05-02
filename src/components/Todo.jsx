@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { MdOutlineDeleteOutline } from "react-icons/md";
 
-const Todo = () => {
+const Todo = ({ data }) => {
+
+ 
+
+
+
+  const handleDelete = () => {
+    // Add your delete functionality here
+    console.log('Delete button clicked');
+  };
+
   return (
     <div className="mt-5">
-      <h2 className="text-center font-bold text-gray-500">🟡 Todo</h2>
-      <div className="bg-white w-full  h-20 shadow-sm rounded-sm p-4 overflow-hidden mx-auto mt-5">
-        <h4 className="text-gray-800 font-bold">delectus aut</h4>
+      <div className={`${data.completed ? 'bg-white' : 'bg-gray-200'} w-full h-20 shadow-sm rounded-sm p-5 overflow-hidden mx-auto mt-5 flex items-center justify-between`} key={data.id}>
+        <div>
+          <h4 className={`text-gray-800 font-bold ${data.completed ? null : 'line-through text-gray-400'}`}>{data.title}</h4>
+        </div>
+        <div>
+          {
+            data.completed ? <button className='bg-green-100 py-1 px-2 font-bold rounded mr-3'>✅</button> : null
+          }
+          <button className='bg-red-100 py-1 px-2 font-bold rounded mr-3' onClick={handleDelete}>❌</button>
+        </div>
       </div>
     </div>
   );
