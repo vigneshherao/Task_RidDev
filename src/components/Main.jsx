@@ -4,6 +4,7 @@ import useFetchList from "../hooks/useFetchList";
 import Form from "./Form";
 import { pending, complted } from "../constants/constant";
 import Shimmer from "./Shimmer";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Main = ({ isAddForm, togglePopUp }) => {
   const [showCompleted, setShowCompleted] = useState(false);
@@ -22,6 +23,7 @@ const Main = ({ isAddForm, togglePopUp }) => {
       {isAddForm && (
         <Form togglePopUp={togglePopUp} updateTodoList={updateTodoList} />
       )}
+      <Toaster></Toaster>
       <div className="w-full flex px-5 md:px-10 mt-1 justify-between">
         <div className="w-1/2 m-1">
           <h2 className="text-center font-bold text-blue-500 text-xl m-2">

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchList } from "../constants/constant";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const useFetchList = () => {
@@ -18,6 +19,7 @@ const useFetchList = () => {
 
   const updateTodoList = (taskData) => {
     setTodoData((previousData) => [taskData, ...previousData]);
+    toast("✅ Added Task Sucessfully")
   };
 
 
@@ -27,15 +29,16 @@ const useFetchList = () => {
         task.id === taskId ? { ...task, completed: !task.completed } : task
       )
     );
+    toast("✅ Completed Task Sucessfully")
   };
 
-  console.log("hello")
 
 
   const deleteTask = (taskId) => {
     setTodoData((previousData) =>
       previousData.filter((task) => task.id !== taskId)
     );
+    toast("✅ Deleted Task Sucessfully")
   };
   
 
