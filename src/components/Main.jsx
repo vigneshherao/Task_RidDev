@@ -50,7 +50,7 @@ const Main = ({ isAddForm, togglePopUp }) => {
             </button>
           </h2>
           {showCompleted
-            ? filteredTasks.map((todo) => <Todo key={todo.id} data={todo} />)
+            ? filteredTasks.map((todo) => <Todo key={todo.id} data={todo} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask} />)
             : null}
         </div>
       </div>
