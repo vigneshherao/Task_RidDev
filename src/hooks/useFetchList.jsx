@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchList } from "../constants/constant";
 
+
 const useFetchList = () => {
   const [todoData, setTodoData] = useState([]);
 
@@ -19,7 +20,24 @@ const useFetchList = () => {
     setTodoData((previousData) => [taskData, ...previousData]);
   };
 
-  return { todoData, updateTodoList };
+
+  const toggleTaskCompletion = (taskId) => {
+    setTodoData((previousData) =>
+      previousData.map((task) =>
+        task.id === taskId ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
+
+  const deleteTask = (taskId) => {
+    setTodoData((previousData) =>
+      previousData.filter((task) => task.id !== taskId)
+    );
+  };
+  
+
+  return { todoData, updateTodoList , toggleTaskCompletion , deleteTask};
 };
 
 export default useFetchList;

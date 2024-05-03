@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { compltedIcon, deleteIcon } from "../constants/constant";
 
-const Todo = ({ data }) => {
+const Todo = ({ data ,toggleTaskCompletion ,deleteTask}) => {
   const { title, completed } = data;
 
-  const handleDelete = () => {
-    console.log("Delete button clicked");
+  const handleDelete = (id) => {
+    deleteTask(id);
   };
+
+
+  const handleCompleted = (id)=>{
+    toggleTaskCompletion(id)
+  }
 
   return (
     <div className="mt-5">
@@ -28,13 +33,13 @@ const Todo = ({ data }) => {
         </div>
         <div className="text-sm md:text-base font-bold">
           {!completed ? (
-            <button className="bg-green-100 py-1 px-2 font-bold rounded mr-3">
+            <button className="bg-green-100 py-1 px-2 font-bold rounded mr-3" onClick={() => handleCompleted(data.id)}>
              {compltedIcon}
             </button>
           ) : null}
           <button
             className="bg-red-100 py-1 px-2 font-bold rounded mr-3"
-            onClick={handleDelete}
+            onClick={()=>handleDelete(data.id)}
           >
            {deleteIcon}
           </button>

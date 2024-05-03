@@ -7,7 +7,7 @@ import Shimmer from "./Shimmer";
 
 const Main = ({ isAddForm, togglePopUp }) => {
   const [showCompleted, setShowCompleted] = useState(false);
-  const { todoData, updateTodoList } = useFetchList();
+  const { todoData, updateTodoList ,toggleTaskCompletion ,deleteTask } = useFetchList();
 
   if (!todoData || todoData.length === 0) {
     return <Shimmer />;
@@ -35,7 +35,7 @@ const Main = ({ isAddForm, togglePopUp }) => {
             </button>
           </h2>
           {!showCompleted
-            ? filteredTasks.map((todo) => <Todo key={todo.id} data={todo} />)
+            ? filteredTasks.map((todo) => <Todo key={todo.id} data={todo}  toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask}/>)
             : null}
         </div>
         <div className="w-1/2 m-1">
