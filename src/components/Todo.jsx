@@ -13,21 +13,21 @@ const Todo = ({ data }) => {
     <div className="mt-5">
       <div
         className={`${
-          completed ? "bg-white" : "bg-gray-200"
+          !completed ? "bg-white" : "bg-gray-200"
         } w-full h-20 shadow-sm rounded-sm p-5 overflow-hidden mx-auto mt-5 flex items-center justify-between`}
         key={data.id}
       >
         <div className="text-sm md:text-base font-bold">
           <h4
             className={`text-sm md:text-gray-800 font-bold  ${
-              completed ? null : "line-through text-blue-400"
+              !completed ? null : "line-through text-blue-400"
             }`}
           >
             {title}
           </h4>
         </div>
         <div className="text-sm md:text-base font-bold">
-          {completed ? (
+          {!completed ? (
             <button className="bg-green-100 py-1 px-2 font-bold rounded mr-3">
              {compltedIcon}
             </button>

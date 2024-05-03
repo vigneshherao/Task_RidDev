@@ -14,7 +14,12 @@ const useFetchList = () => {
     setTodoData(results);
   };
 
-  return todoData;
+
+  const updateTodoList = (taskData) => {
+    setTodoData((previousData) => [taskData, ...previousData]);
+  };
+
+  return { todoData, updateTodoList };
 };
 
 export default useFetchList;

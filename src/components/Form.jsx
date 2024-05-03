@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { deleteIcon, headTitle } from "../constants/constant";
 
-const Form = ({ togglePopUp }) => {
+const Form = ({ togglePopUp ,updateTodoList }) => {
 
+  const [inputData, setInputData] = useState('');
+
+  console.log(inputData)
+  
   const handleSubmit = (e)=>{
     e.preventDefault();
+    const taskData = {
+      userId: 1,
+      id: Math.floor(Math.random() * 10000),
+      title: inputData,
+      completed: false,
+    };
+
+    updateTodoList(taskData);
+
+    setInputData("");
   }
 
   return (
-    <div className="w-full md:w-1/2 bg-white h-[200px] p-5 shadow-2xl absolute z-30 top-32 md:left-[25%] ">
+    <div className="w-full md:w-1/2 bg-white h-[200px] p-5 shadow-2xl absolute z-30 top-32 md:left-[25%] border-blue-200 border-2 ">
       <div className="flex justify-between items-center mb-2">
         <h3 className="text-center m-2 font-semibold text-xl text-blue-500">
           {headTitle}
@@ -19,7 +33,9 @@ const Form = ({ togglePopUp }) => {
         <input
           className="bg-gray-100 w-full p-2 shadow-md rounded"
           type="text"
+          value={inputData}
           placeholder="Enter a Task!"
+          onChange={(e)=>setInputData(e.target.value)}
         ></input>
         <button className="bg-blue-500 text-white font-bold p-1 rounded w-full mt-5">
           {headTitle}
