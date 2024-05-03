@@ -1,25 +1,13 @@
 import React, { useState } from "react";
 import { deleteIcon, headTitle } from "../constants/constant";
+import useFormSubmit from "../hooks/useFormSubmit";
 
-const Form = ({ togglePopUp ,updateTodoList }) => {
-
-  const [inputData, setInputData] = useState('');
-
-  console.log(inputData)
+const Form = ({ togglePopUp, updateTodoList }) => {
   
-  const handleSubmit = (e)=>{
-    e.preventDefault();
-    const taskData = {
-      userId: 1,
-      id: Math.floor(Math.random() * 10000),
-      title: inputData,
-      completed: false,
-    };
-
-    updateTodoList(taskData);
-
-    setInputData("");
-  }
+  const { setInputData, handleSubmit, inputData } = useFormSubmit(
+    togglePopUp,
+    updateTodoList
+  );
 
   return (
     <div className="w-full md:w-1/2 bg-white h-[200px] p-5 shadow-2xl absolute z-30 top-32 md:left-[25%] border-blue-200 border-2 ">
@@ -35,7 +23,7 @@ const Form = ({ togglePopUp ,updateTodoList }) => {
           type="text"
           value={inputData}
           placeholder="Enter a Task!"
-          onChange={(e)=>setInputData(e.target.value)}
+          onChange={(e) => setInputData(e.target.value)}
         ></input>
         <button className="bg-blue-500 text-white font-bold p-1 rounded w-full mt-5">
           {headTitle}

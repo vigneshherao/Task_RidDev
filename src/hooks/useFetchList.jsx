@@ -29,6 +29,8 @@ const useFetchList = () => {
     );
   };
 
+  console.log("hello")
+
 
   const deleteTask = (taskId) => {
     setTodoData((previousData) =>
