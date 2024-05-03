@@ -42,7 +42,7 @@ const useFetchList = () => {
   };
   
 
-  return { todoData, updateTodoList , toggleTaskCompletion , deleteTask};
+  return { todoData ,setTodoData, updateTodoList , toggleTaskCompletion , deleteTask};
 };
 
 export default useFetchList;
