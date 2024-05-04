@@ -10,8 +10,9 @@ import { Reorder, useDragControls } from "framer-motion";
 const Main = ({ isAddForm, togglePopUp }) => {
   const controls = useDragControls();
   const [showCompleted, setShowCompleted] = useState(false);
-  const { todoData, updateTodoList, toggleTaskCompletion, deleteTask, setTodoData } =
-    useFetchList();
+  const { todoData, updateTodoList, toggleTaskCompletion, deleteTask, setTodoData } = useFetchList();
+  const [pendingTasks, setPendingTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
 
   useEffect(() => {
     if (!todoData) return;
@@ -21,8 +22,6 @@ const Main = ({ isAddForm, togglePopUp }) => {
     setCompletedTasks(completedTasks);
   }, [todoData]);
 
-  const [pendingTasks, setPendingTasks] = useState([]);
-  const [completedTasks, setCompletedTasks] = useState([]);
 
   if (!todoData || todoData.length === 0) {
     return <Shimmer />;
